@@ -1,0 +1,40 @@
+/* {{ !--FITUR CONTENT TENGAHH--! }} */
+.services {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-top: -30px;
+}
+
+/* |fitur tengah hotel , tiket , rental| */
+.service {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  padding: 18px 28px;
+  border-radius: 999px;
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+  font-size: 16px;
+  background: #1c1d65;
+  transition: all 0.3s ease;
+}
+
+
+.service:hover {
+  background: rgba(11, 11, 11, 0.65);
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(6, 176, 243, 0.35);
+}
+
+.service.active {
+  background: rgba(26, 115, 232, 0.7);
+  color: white;
+}
+
+.service.active:hover {
+  transform: translateY(-8px) scale(1.03);
+}

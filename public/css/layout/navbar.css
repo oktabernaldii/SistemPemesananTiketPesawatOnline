@@ -1,0 +1,20 @@
+/* {{ !--NAVBAR--! }} */
+.navbar {
+  /*ini baris atas */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 16px 24px;
+  /* JANGAN KEGEDEAN */
+  width: 100%;
+  box-sizing: border-box;
+
+  background: rgba(11, 11, 11, 0.6);
+  /* transparan bg */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  /* sampai ini */
+}

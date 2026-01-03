@@ -1,0 +1,13 @@
+@import url('layout/navbar.css');
+@import url('pages/login.css');
+@import url('base/body.css');
+@import url('components/hero.css');
+@import url('components/services.css');
+@import url('components/table.css');
+@import url('components/ini-card-konfirmasi-isidata.css');
+@import url('components/card-show-flights.css');
+@import url('components/modal-hapus.css');
+@import url('components/login-navbar-new.css');
+@import url('components/riwayat-pesanan.css');
+@import url('components/tambah-riwayat.css');
+

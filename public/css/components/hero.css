@@ -1,0 +1,72 @@
+.hero {
+  position: relative;
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: rgb(209, 224, 211);
+  padding: 0 20px;
+}
+
+/* Judul utama */
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 16px;
+  text-shadow: 0 6px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Highlight kata penting */
+.hero-title span {
+  background: linear-gradient(135deg, #0fd6bc, #0df306);
+
+  background-clip: text;
+  /* standar */
+  -webkit-background-clip: text;
+  /* Safari / Chrome */
+
+  color: transparent;
+  /* standar */
+  -webkit-text-fill-color: transparent;
+}
+
+/* Subjudul */
+.hero-subtitle {
+  margin-top: 20px;
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(16px, 2vw, 22px);
+  font-weight: 500;
+  color: rgba(255, 247, 0, 0.806);
+  text-align: center;
+  max-width: 700px;
+
+
+  /* Biar kebaca di foto */
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.75);
+
+  /* Efek elegan */
+  backdrop-filter: blur(2px);
+}
+
+
+/* Animasi masuk */
+.hero-title,
+.hero-subtitle {
+  animation: fadeUp 1s ease forwards;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

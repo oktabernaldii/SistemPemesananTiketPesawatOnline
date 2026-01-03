@@ -1,0 +1,174 @@
+/* ===============================
+   FIX NAVBAR OVERLAP
+================================ */
+.booking-page,
+.confirm-wrapper {
+    padding-top: 110px; /* aman dari navbar fixed */
+    padding-bottom: 80px;
+}
+
+/* ===============================
+   LAYOUT WRAPPER
+================================ */
+.confirm-wrapper {
+    max-width: 1100px;
+    margin: auto;
+}
+
+.confirm-grid {
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    gap: 28px;
+    align-items: start;
+}
+
+/* ===============================
+   GLASS CARD (HITAM TRANSPARAN)
+================================ */
+.summary-card,
+.form-card {
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-radius: 18px;
+    padding: 24px;
+    color: #ffffff;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.55);
+    overflow: hidden;
+}
+.form-card textarea {
+    resize: none;
+}
+
+.form-card input,
+.form-card textarea {
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* ===============================
+   SUMMARY CARD (KIRI)
+================================ */
+.summary-card h3 {
+    font-size: 18px;
+    margin-bottom: 16px;
+}
+
+.summary-item {
+    margin-bottom: 12px;
+    font-size: 14px;
+}
+
+.summary-item span {
+    display: block;
+    font-size: 12px;
+    color: rgba(255,255,255,0.65);
+}
+
+.summary-price {
+    margin-top: 18px;
+    font-size: 22px;
+    font-weight: 700;
+    color: #22c55e;
+}
+
+/* ===============================
+   FORM CARD (KANAN)
+================================ */
+
+.form-card h3 {
+    font-size: 20px;
+    margin-bottom: 18px;
+}
+
+.form-group {
+    margin-bottom: 14px;
+}
+
+.form-card label {
+    display: block;
+    font-size: 13px;
+    margin-bottom: 6px;
+    color: rgba(255,255,255,0.7);
+}
+
+.form-card input,
+.form-card textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.18);
+    color: #fff;
+    font-size: 14px;
+}
+
+.form-card input::placeholder,
+.form-card textarea::placeholder {
+    color: rgba(255,255,255,0.55);
+}
+
+.form-card input:focus,
+.form-card textarea:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 2px rgba(59,130,246,0.4);
+}
+
+/* ===============================
+   ACTIONS
+================================ */
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 22px;
+}
+
+.back-link {
+    color: rgba(255,255,255,0.65);
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.back-link:hover {
+    color: #ffffff;
+}
+
+/* ===============================
+   BUTTON
+================================ */
+.btn-confirm {
+    padding: 12px 26px;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    color: #fff;
+    background: linear-gradient(135deg, #2563eb, #3b82f6);
+    box-shadow: 0 14px 35px rgba(59,130,246,0.55);
+    transition: all 0.25s ease;
+}
+
+.btn-confirm:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 20px 45px rgba(59,130,246,0.75);
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+@media (max-width: 900px) {
+    .confirm-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .summary-card {
+        order: 2;
+    }
+
+    .form-card {
+        order: 1;
+    }
+}

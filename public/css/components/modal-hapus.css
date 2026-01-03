@@ -1,0 +1,21 @@
+/* ===============================
+   SWEETALERT GLASS STYLE
+================================ */
+.glass-alert {
+    border-radius: 18px !important;
+    backdrop-filter: blur(18px);
+    background: rgba(15, 23, 42, 0.85) !important;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.8);
+}
+
+.confirm-btn {
+    border-radius: 999px !important;
+    padding: 10px 22px !important;
+    font-weight: 600;
+}
+
+.cancel-btn {
+    border-radius: 999px !important;
+    padding: 10px 22px !important;
+    font-weight: 500;
+}

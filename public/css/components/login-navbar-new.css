@@ -1,0 +1,182 @@
+/* ============================= */
+/* NAVBAR CONTAINER */
+/* ============================= */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    padding: 0 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(8px);
+    z-index: 999;
+    padding-left: 20px;   /* 👈 kecilkan */
+    padding-right: 20px;  /* 👈 seimbang */
+    
+}
+
+/* ============================= */
+/* BRAND */
+/* ============================= */
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.plane {
+    font-size: 22px;
+}
+
+.logo-text {
+    font-family: 'Pacifico', cursive;
+    font-size: 22px;
+    color: #f8fafc;
+    text-decoration: none;
+}
+
+/* ============================= */
+/* RIGHT NAV ACTIONS */
+/* ============================= */
+.navbar>a,
+.nav-user {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* ============================= */
+/* BUTTON BASE */
+/* ============================= */
+.nav-btn {
+    padding: 8px 20px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    border: 1px solid transparent;
+}
+
+/* ============================= */
+/* LOGIN BUTTON */
+/* ============================= */
+.nav-btn.login {
+    color: #cbd5f5;
+    border-color: #cbd5f5;
+    background: transparent;
+}
+
+.nav-btn.login:hover {
+    background: #cbd5f5;
+    color: #020617;
+}
+
+/* ============================= */
+/* REGISTER BUTTON */
+/* ============================= */
+.nav-btn.register {
+    background: linear-gradient(135deg, #8b5cf6, #6366f1);
+    color: #ffffff;
+}
+
+.nav-btn.register:hover {
+    opacity: 0.85;
+}
+
+/* ============================= */
+/* USER LOGGED IN */
+/* ============================= */
+.nav-user {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.username {
+    color: #e5e7eb;
+    font-size: 14px;
+}
+
+/* ============================= */
+/* LOGOUT */
+/* ============================= */
+.nav-btn.logout {
+    background: #ef4444;
+    color: white;
+    border: none;
+}
+
+.nav-btn.logout:hover {
+    background: #dc2626;
+}
+
+/* ============================= */
+/* FIX CONTENT KETUTUP NAVBAR */
+/* ============================= */
+body {
+    padding-top: 80px;
+}
+
+/* Lebih ke kanan */
+.nav-user {
+    margin-left: auto;
+    padding-right: 0;
+}
+
+
+.nav-btn {
+    position: relative;
+    padding: 8px 22px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.nav-btn.login {
+    color: #cbd5f5;
+    border: 1px solid #cbd5f5;
+    background: transparent;
+}
+
+.nav-btn.login:hover {
+    background: rgba(203, 213, 245, 0.15);
+    box-shadow: 0 0 12px rgba(203, 213, 245, 0.6);
+    transform: translateY(-1px);
+}
+
+.nav-btn.register {
+    background: linear-gradient(135deg, #8b5cf6, #6366f1);
+    color: #ffffff;
+    border: none;
+    box-shadow: 0 0 15px rgba(139, 92, 246, 0.6);
+    animation: glowPulse 2.5s infinite ease-in-out;
+}
+
+.nav-btn.register:hover {
+    box-shadow:
+        0 0 10px rgba(139, 92, 246, 0.8),
+        0 0 30px rgba(99, 102, 241, 0.8),
+        0 0 60px rgba(99, 102, 241, 0.6);
+    transform: translateY(-2px) scale(1.05);
+}
+
+.user-badge {
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #c7d2fe;
+    background: rgba(99, 102, 241, 0.15);
+    border: 1px solid rgba(99, 102, 241, 0.4);
+    white-space: nowrap;
+}

@@ -1,0 +1,28 @@
+.search-card {
+  background: rgba(51, 63, 84, 0.95);
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+}
+
+
+.search-card form {
+  display: flex;
+  gap: 12px;
+}
+
+.search-card input {
+  flex: 1;
+  padding: 12px;
+  background: #000000;
+}
+
+.search-card button {
+  background: #1c1d65;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+}

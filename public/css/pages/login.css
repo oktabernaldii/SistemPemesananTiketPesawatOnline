@@ -1,0 +1,107 @@
+/* |fitur login regis| */
+.auth {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* LOGIN BUTTON */
+.btn-login {
+  text-decoration: none;
+  padding: 8px 22px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 15px;
+  color: #ffffff;
+  border: 1.5px solid rgba(255, 255, 255, 0.5);
+  background: transparent;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(6px);
+}
+
+.btn-login:hover {
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.35);
+  transform: translateY(-1px);
+}
+
+/* REGISTER BUTTON (PRIMARY) */
+.btn-register {
+  text-decoration: none;
+  padding: 8px 24px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 15px;
+  color: #ffffff;
+  background: linear-gradient(135deg, #6366f1, #9333ea);
+  transition: all 0.3s ease;
+}
+
+.btn-register:hover {
+  box-shadow: 0 0 20px rgba(147, 51, 234, 0.7);
+  transform: translateY(-1px) scale(1.03);
+}
+
+/* WRAPPER */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+
+/* PESAWAT */
+.plane {
+  font-size: 28px;
+  display: inline-block;
+  animation: fly 3s ease-in-out infinite;
+}
+
+/* ANIMASI PESAWAT */
+@keyframes fly {
+  0% {
+    transform: translateY(0) rotate(-5deg);
+  }
+
+  50% {
+    transform: translateY(-8px) rotate(5deg);
+  }
+
+  100% {
+    transform: translateY(0) rotate(-5deg);
+  }
+}
+
+/* TEKS LOGO */
+.logo-text {
+  font-family: 'Pacifico', cursive;
+  font-size: 28px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  background: linear-gradient(135deg, #aa2727, #f9f9f9);
+  background-clip: text;
+  /* standar */
+  -webkit-background-clip: text;
+  /* Chrome, Safari */
+  color: transparent;
+  /* fallback */
+  -webkit-text-fill-color: transparent;
+  transition: all 0.4s ease;
+  text-shadow:
+    0 0 10px rgba(99, 102, 241, 0.8);
+}
+
+/* HOVER EFEK TEKS */
+.brand:hover .logo-text {
+  letter-spacing: 3px;
+  text-shadow:
+    0 0 10px rgba(220, 217, 12, 0.9),
+    0 0 25px rgba(0, 0, 0, 0.8);
+  transform: scale(1.05);
+}
+
+/* HOVER EFEK PESAWAT */
+.brand:hover .plane {
+  animation-duration: 1.2s;
+  transform: translateX(6px) rotate(10deg);
+}

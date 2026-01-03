@@ -1,0 +1,35 @@
+/* =========================
+   FIX OVERLAY HITAM KECIL
+========================= */
+
+/* pastikan container utama tidak kepotong */
+.confirm-wrapper,
+.booking-history,
+.flight-list,
+.table-wrapper,
+.section,
+.hero,
+.header-overlay {
+    overflow: visible !important;
+}
+
+/* matikan pseudo element yang bikin petak hitam */
+.section::before,
+.section::after,
+.hero::before,
+.hero::after {
+    content: none !important;
+}
+
+/* kalau background pakai overlay */
+.section-overlay,
+.hero-overlay {
+    display: none !important;
+}
+
+/* jaga z-index konten */
+.flight-list,
+.table-wrapper {
+    position: relative;
+    z-index: 5;
+}
