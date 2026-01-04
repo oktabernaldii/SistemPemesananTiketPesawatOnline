@@ -15,20 +15,30 @@
     <section class="flight-content">
         <div class="table-card">
 
+            <!-- HEADER ACTION -->
             <div class="table-header">
                 <div class="flight-actions">
-                    <a href="{{ route('flights.create') }}" class="btn-add">
-                        + Tambah Penerbangan
-                    </a>
 
+                    {{-- TOMBOL TAMBAH (ADMIN ONLY) --}}
+                    @auth
+                        @if(auth()->user()->isAdmin())
+                            <a href="{{ route('flights.create') }}" class="btn-add">
+                                + Tambah Penerbangan
+                            </a>
+                        @endif
+                    @endauth
+
+                    {{-- RIWAYAT PESANAN (USER & ADMIN) --}}
                     @auth
                         <a href="{{ route('bookings.history') }}" class="btn-history">
                             📄 Riwayat Pesanan
                         </a>
                     @endauth
+
                 </div>
             </div>
 
+            <!-- TABLE -->
             <table>
                 <thead>
                     <tr>
@@ -51,27 +61,38 @@
                             <td>{{ $flight->departure_date }}</td>
                             <td>{{ $flight->departure_time }} - {{ $flight->arrival_time }}</td>
                             <td>Rp {{ number_format($flight->price, 0, ',', '.') }}</td>
+
                             <td class="actions">
+
+                                {{-- PESAN (SEMUA USER LOGIN) --}}
                                 <form action="{{ route('flights.show', $flight->id) }}" method="GET" style="display:inline;">
                                     <button type="submit" class="btn success">
                                         Pesan
                                     </button>
                                 </form>
 
-                                <form action="{{ route('flights.edit', $flight->id) }}" method="GET" style="display:inline;">
-                                    <button type="submit" class="btn warning">
-                                        Edit
-                                    </button>
-                                </form>
+                                {{-- EDIT & HAPUS (ADMIN ONLY) --}}
+                                @auth
+                                    @if(auth()->user()->isAdmin())
 
+                                        <form action="{{ route('flights.edit', $flight->id) }}" method="GET" style="display:inline;">
+                                            <button type="submit" class="btn warning">
+                                                Edit
+                                            </button>
+                                        </form>
 
-                                <form action="{{ route('flights.destroy', $flight->id) }}" method="POST" class="delete-form">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="button" class="btn danger btn-delete">
-                                        Hapus
-                                    </button>
-                                </form>
+                                        <form action="{{ route('flights.destroy', $flight->id) }}" method="POST" style="display:inline;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn danger"
+                                                onclick="return confirm('Yakin ingin menghapus penerbangan ini?')">
+                                                Hapus
+                                            </button>
+                                        </form>
+
+                                    @endif
+                                @endauth
+
                             </td>
                         </tr>
                     @empty

@@ -61,4 +61,30 @@ class BookingController extends Controller
 
         return view('bookings.history', compact('bookings'));
     }
+
+    public function adminIndex()
+    {
+        $bookings = Booking::with(['user', 'flight'])->latest()->get();
+        return view('admin.bookings.index', compact('bookings'));
+    }
+
+    public function adminEdit(Booking $booking)
+    {
+        return view('admin.bookings.edit', compact('booking'));
+    }
+
+    public function adminUpdate(Request $request, Booking $booking)
+    {
+        $request->validate([
+            'status' => 'required|in:pending,paid,cancelled'
+        ]);
+
+        $booking->update([
+            'status' => $request->status
+        ]);
+
+        return redirect()
+            ->route('admin.bookings.index')
+            ->with('success', 'Status pesanan diperbarui');
+    }
 }
