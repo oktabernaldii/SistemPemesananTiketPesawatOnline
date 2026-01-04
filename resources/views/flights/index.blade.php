@@ -2,110 +2,114 @@
 
 @section('content')
 
-    <!-- HERO -->
-    <section class="hero-flights">
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <h1>✈️ Daftar Penerbangan</h1>
-            <p>Temukan penerbangan terbaik dengan harga terbaik</p>
-        </div>
-    </section>
+<!-- HERO -->
+<section class="hero-flights">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <h1>✈️ Daftar Penerbangan</h1>
+        <p>Temukan penerbangan terbaik dengan harga terbaik</p>
+    </div>
+</section>
 
-    <!-- CONTENT -->
-    <section class="flight-content">
-        <div class="table-card">
+<!-- CONTENT -->
+<section class="flight-content">
+    <div class="table-card">
 
-            <!-- HEADER ACTION -->
-            <div class="table-header">
-                <div class="flight-actions">
+        <!-- HEADER ACTION -->
+        <div class="table-header">
+            <div class="flight-actions">
 
-                    {{-- TOMBOL TAMBAH (ADMIN ONLY) --}}
-                    @auth
-                        @if(auth()->user()->isAdmin())
-                            <a href="{{ route('flights.create') }}" class="btn-add">
-                                + Tambah Penerbangan
-                            </a>
-                        @endif
-                    @endauth
+                @auth
+                    {{-- ADMIN ACTION --}}
+                    @if(auth()->user()->isAdmin())
+                        <a href="{{ route('flights.create') }}" class="btn-add">
+                            + Tambah Penerbangan
+                        </a>
 
-                    {{-- RIWAYAT PESANAN (USER & ADMIN) --}}
-                    @auth
+                        <a href="{{ route('admin.bookings.index') }}" class="btn-history">
+                            📋 Kelola Pesanan
+                        </a>
+                    @else
+                        {{-- USER ACTION --}}
                         <a href="{{ route('bookings.history') }}" class="btn-history">
                             📄 Riwayat Pesanan
                         </a>
-                    @endauth
+                    @endif
+                @endauth
 
-                </div>
             </div>
+        </div>
 
-            <!-- TABLE -->
-            <table>
-                <thead>
+        <!-- TABLE -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Maskapai</th>
+                    <th>Kode</th>
+                    <th>Rute</th>
+                    <th>Tanggal</th>
+                    <th>Jam</th>
+                    <th>Harga</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @forelse($flights as $flight)
                     <tr>
-                        <th>Maskapai</th>
-                        <th>Kode</th>
-                        <th>Rute</th>
-                        <th>Tanggal</th>
-                        <th>Jam</th>
-                        <th>Harga</th>
-                        <th>Aksi</th>
-                    </tr>
-                </thead>
+                        <td>{{ $flight->airline }}</td>
+                        <td>{{ $flight->flight_code }}</td>
+                        <td>{{ $flight->origin }} → {{ $flight->destination }}</td>
+                        <td>{{ $flight->departure_date }}</td>
+                        <td>{{ $flight->departure_time }} - {{ $flight->arrival_time }}</td>
+                        <td>Rp {{ number_format($flight->price, 0, ',', '.') }}</td>
 
-                <tbody>
-                    @forelse($flights as $flight)
-                        <tr>
-                            <td>{{ $flight->airline }}</td>
-                            <td>{{ $flight->flight_code }}</td>
-                            <td>{{ $flight->origin }} → {{ $flight->destination }}</td>
-                            <td>{{ $flight->departure_date }}</td>
-                            <td>{{ $flight->departure_time }} - {{ $flight->arrival_time }}</td>
-                            <td>Rp {{ number_format($flight->price, 0, ',', '.') }}</td>
+                        <td class="actions">
 
-                            <td class="actions">
-
-                                {{-- PESAN (SEMUA USER LOGIN) --}}
+                            {{-- PESAN (SEMUA USER LOGIN) --}}
+                            @auth
                                 <form action="{{ route('flights.show', $flight->id) }}" method="GET" style="display:inline;">
                                     <button type="submit" class="btn success">
                                         Pesan
                                     </button>
                                 </form>
+                            @endauth
 
-                                {{-- EDIT & HAPUS (ADMIN ONLY) --}}
-                                @auth
-                                    @if(auth()->user()->isAdmin())
+                            {{-- EDIT & HAPUS (ADMIN ONLY) --}}
+                            @auth
+                                @if(auth()->user()->isAdmin())
 
-                                        <form action="{{ route('flights.edit', $flight->id) }}" method="GET" style="display:inline;">
-                                            <button type="submit" class="btn warning">
-                                                Edit
-                                            </button>
-                                        </form>
+                                    <form action="{{ route('flights.edit', $flight->id) }}" method="GET" style="display:inline;">
+                                        <button type="submit" class="btn warning">
+                                            Edit
+                                        </button>
+                                    </form>
 
-                                        <form action="{{ route('flights.destroy', $flight->id) }}" method="POST" style="display:inline;">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn danger"
-                                                onclick="return confirm('Yakin ingin menghapus penerbangan ini?')">
-                                                Hapus
-                                            </button>
-                                        </form>
+                                    <form action="{{ route('flights.destroy', $flight->id) }}" method="POST" style="display:inline;">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn danger"
+                                            onclick="return confirm('Yakin ingin menghapus penerbangan ini?')">
+                                            Hapus
+                                        </button>
+                                    </form>
 
-                                    @endif
-                                @endauth
+                                @endif
+                            @endauth
 
-                            </td>
-                        </tr>
-                    @empty
-                        <tr>
-                            <td colspan="7" class="empty">
-                                Belum ada penerbangan tersedia
-                            </td>
-                        </tr>
-                    @endforelse
-                </tbody>
-            </table>
+                        </td>
+                    </tr>
+                @empty
+                    <tr>
+                        <td colspan="7" class="empty">
+                            Belum ada penerbangan tersedia
+                        </td>
+                    </tr>
+                @endforelse
+            </tbody>
+        </table>
 
-        </div>
-    </section>
+    </div>
+</section>
 
 @endsection

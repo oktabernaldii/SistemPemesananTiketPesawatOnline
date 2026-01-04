@@ -2,20 +2,34 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Booking extends Model
 {
+    use HasFactory;
+
     protected $fillable = [
         'user_id',
         'flight_id',
         'name',
         'email',
         'phone',
-        'note',
         'total_price',
         'status',
     ];
+
+    /**
+     * RELASI KE USER
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    /**
+     * RELASI KE FLIGHT
+     */
     public function flight()
     {
         return $this->belongsTo(Flight::class);

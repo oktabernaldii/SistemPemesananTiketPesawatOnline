@@ -95,3 +95,10 @@ Route::middleware('auth')->group(function () {
 */
 Route::get('/flights/{flight}', [FlightController::class, 'show'])
     ->name('flights.show');
+
+
+Route::middleware(['auth', 'admin'])->group(function () {
+
+    Route::get('/admin/bookings', [BookingController::class, 'adminIndex'])
+        ->name('admin.bookings.index');
+});
